@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.haozf.springcloud.mybatis.mapper.OauthApprovalsMapper" >
+  <resultMap id="BaseResultMap" type="org.haozf.springcloud.mybatis.model.OauthApprovals" >
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="clientId" property="clientid" jdbcType="VARCHAR" />
+    <result column="scope" property="scope" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="expiresAt" property="expiresat" jdbcType="TIMESTAMP" />
+    <result column="lastModifiedAt" property="lastmodifiedat" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    userId, clientId, scope, status, expiresAt, lastModifiedAt
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.haozf.springcloud.mybatis.model.OauthApprovalsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from oauth_approvals
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="org.haozf.springcloud.mybatis.model.OauthApprovals" >
+    insert into oauth_approvals (userId, clientId, scope, 
+      status, expiresAt, lastModifiedAt
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, #{scope,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{expiresat,jdbcType=TIMESTAMP}, #{lastmodifiedat,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.haozf.springcloud.mybatis.model.OauthApprovals" >
+    insert into oauth_approvals
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="clientid != null" >
+        clientId,
+      </if>
+      <if test="scope != null" >
+        scope,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="expiresat != null" >
+        expiresAt,
+      </if>
+      <if test="lastmodifiedat != null" >
+        lastModifiedAt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null" >
+        #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null" >
+        #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="expiresat != null" >
+        #{expiresat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedat != null" >
+        #{lastmodifiedat,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.haozf.springcloud.mybatis.model.OauthApprovalsExample" resultType="java.lang.Integer" >
+    select count(*) from oauth_approvals
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

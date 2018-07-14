@@ -52,12 +52,51 @@
 		</javaClientGenerator>
 
 		<!-- 要对那些数据表进行生成操作，必须要有一个. -->
-		<table schema="" tableName="t_user" domainObjectName="User"
+		<table schema="" tableName="clientdetails" domainObjectName="ClientDetails"
         	enableCountByExample="true" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="true"
             selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="user_id" sqlStatement="JDBC"/>
+            <generatedKey column="appId" sqlStatement="JDBC"/>
+        </table>
+        <table schema="" tableName="oauth_approvals" domainObjectName="OauthApprovals"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table schema="" tableName="oauth_client_token" domainObjectName="OauthClientToken"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="authentication_id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="" tableName="oauth_code" domainObjectName="OauthCode"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table schema="" tableName="oauth_access_token" domainObjectName="OauthAccessToken"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="authentication_id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="" tableName="oauth_client_details" domainObjectName="OauthClientDetails"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="client_id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="" tableName="oauth_refresh_token" domainObjectName="OauthRefreshToken"
+        	enableCountByExample="true" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="true"
+            selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
         </table>
 	</context>
 </generatorConfiguration>
